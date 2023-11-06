@@ -1,0 +1,42 @@
+CREATE TABLE admins(
+	cd_admin INT(11) AUTO_INCREMENT PRIMARY KEY,
+	nome_admin VARCHAR(32) NOT NULL,
+	e_mail_admin VARCHAR(64) NOT NULL,
+	senha_admin VARCHAR(64) NOT NULL,
+	ativ_admin TINYINT NOT NULL
+);
+
+CREATE TABLE pets(
+	cd_pet INT(11) AUTO_INCREMENT PRIMARY KEY,
+	nome_pet VARCHAR(32) NOT NULL,
+	especie VARCHAR(32) NOT NULL,
+	raça VARCHAR(32) NOT NULL,
+	idade INT(3) NOT NULL,
+	peso DECIMAL(6,3) NULL,
+	porte VARCHAR(16) NOT NULL,
+	local VARCHAR(128) NOT NULL,
+	sobre VARCHAR(256) NULL,
+	status VARCHAR(16) NOT NULL
+);
+
+CREATE TABLE fotos(
+	id_pet INT,
+	FOREIGN KEY (id_pet) REFERENCES pets(cd_pet),
+	nome_imagen VARCHAR(32) NOT NULL
+);
+
+
+CREATE TABLE solicitacao(
+	cd_solic INT(11) AUTO_INCREMENT PRIMARY KEY,
+	nome_solic VARCHAR(32) NOT NULL,
+	nome_pet VARCHAR(32) NOT NULL,	 
+	cpf VARCHAR(14) NOT NULL,
+	e_mail_solic VARCHAR(64) NOT NULL,
+	cel_solic VARCHAR(16) NOT NULL,
+	data_nasc DATE NOT NULL,
+	data_solic DATETIME
+);
+
+INSERT INTO admins SET 
+        nome_admin='admin', e_mail_admin='admin@gmail.com', 
+	senha_admin='admin', ativ_admin='1';
